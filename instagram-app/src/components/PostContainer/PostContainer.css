@@ -1,0 +1,45 @@
+/* // ---- Post Article ---- // */
+
+article {
+    margin-bottom: 60px;
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    margin-left: -1px;
+    margin-right: -1px;
+    padding: 0;
+}
+
+
+/* // ---- Post Header ---- // */
+
+.post-header-container {
+    height: 60px;
+    padding: 0 16px;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    border-bottom: 1px solid #efefef;
+}
+
+.post-header-container .thumbnail-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+
+}
+
+.post-header-container h4 {
+    font-size: .9em;
+    color: #262626;
+    font-weight: 600;
+    letter-spacing: .3px;
+    margin-left: 15px;
+}
