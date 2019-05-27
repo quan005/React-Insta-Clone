@@ -1,4 +1,5 @@
 import React from 'react';
+import fuse from 'fuse.js';
 import './SearchBar.css';
 import Icons from './instagram-logos.png';
 import Icons2 from './instagram-logos-2.png';
@@ -88,32 +89,48 @@ const profileIcon = {
     marginLeft: '30px'
 };
 
+
 class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: "",
+            post: props.dummyData,
+            username: props.username,
+            search: props.query,
             inputPlaceHolder: true,
         }
     }
 
     inputChangeHandler = event => {
-        event.preventDefault();
         this.setState({ [event.target.name]: event.target.value });
     };
 
     inputBlurHandler = event => {
         event.preventDefault();
         this.setState({inputPlaceHolder: true});
-    }
+    };
 
     placeHolderClickHandler = event => {
         event.preventDefault();
         this.setState({inputPlaceHolder: false});
         document.getElementById("header-search").focus();
-    }
+    };
 
     render() {
+
+        // const fuseOptions = {
+        //     shouldSort: true,
+        //     threshold: 0.4,
+        //     location: 0,
+        //     distance: 50,
+        //     maxPatternLength: 12,
+        //     minMatchCharLength: 3,
+        //     keys: [this.state.username]
+        //   };
+
+        // const fuse = new Fuse(this.state.post, fuseOptions);
+
+        // const results = this.state.search ? fuse.search(this.state.search) : this.state.post;
 
         return (
             <div className="header">
@@ -133,12 +150,12 @@ class SearchBar extends React.Component {
                             name="search"
                             id="header-search"
                             onBlur={this.inputBlurHandler}
-                            onChange={this.inputChangeHandler}
+                            onChange={this.state.search}
                         />
 
                         <span className={`${this.state.inputPlaceHolder === true ? 'hidden' : ''}`} style={inputSearchIcon}></span>
                         <div className={`${this.state.inputPlaceHolder === true ? 'hidden' : 'input-space'}`}></div>
-                        <span className={`${this.state.inputPlaceHolder === true ? 'hidden' : ''}`} onClick={this.inputBlurHandler} style={searchClear}></span>
+                        <span className={`${this.state.inputPlaceHolder === true ? 'hidden' : ''}`} onClick={this.inputBlurHandler} role="button" style={searchClear}></span>
 
                         <div className={`${this.state.inputPlaceHolder === true ? 'input-placeholder' : 'hidden'}`} onClick={this.placeHolderClickHandler}>
                             <div className="input-placeholder-container">

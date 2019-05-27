@@ -12,6 +12,7 @@ class App extends Component {
     super();
     this.state = {
       dummyData: [],
+      searchQuery: [],
     };
   }
 
@@ -19,19 +20,48 @@ class App extends Component {
     this.setState({dummyData: dummyData});
   }
 
+
+  searchHandler = event => {
+    let ogData = this.state.dummyData;
+
+    ogData = ogData.filter(function(item) {
+      return item.search(event.target.value.toLowerCase()) !== -1;
+    });
+
+    this.setState({searchQuery: ogData});
+  }
+
+
+
   render() {
 
-    const post = this.state.dummyData.map(data => (
-      <PostContainer dummyData={data} thumbnailUrl={data.thumbnailUrl} username={data.username} />
+    const Post = this.state.dummyData.map(data => (
+      <PostContainer 
+        dummyData={this.state.dummyData} 
+        thumbnailUrl={data.thumbnailUrl} 
+        username={data.username}
+        imageUrl={data.imageUrl}
+        likes={data.likes}
+        comments={data.comments}
+        timestamp={data.timestamp}
+        key={data.timestamp}
+      />
     ));
+
+    // const query = this.state.dummyData.map(data => (
+      
+    // ));
 
     return (
       <div>
-        <SearchBar />
+        <SearchBar
+          dummyData={this.state.dummyData}
+          query={this.searchHandler}
+        />
 
         <section className="post-section">
           <div className="post-collection">
-            {post}
+            {Post}
           </div>
         </section>
 

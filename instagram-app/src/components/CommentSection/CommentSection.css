@@ -1,0 +1,54 @@
+/* // ---- Comment Like Section ---- // */
+
+.like-container {
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.like-content-container:nth-child(1) {
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 4px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    
+}
+
+.like-content-container:nth-child(2) {
+    margin-bottom: 8px;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+.comment-icons-container {
+    min-height: 40px;
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.like-icon {}
+
+.comment-icon {}
+
+.like-content-container h4 {
+    font-size: 1em;
+    color: #262626;
+    font-weight: 600;
+    letter-spacing: .3px;
+}
