@@ -94,7 +94,12 @@
     left: -5px;
 }
 
-.input-container input {
+.input-container form {
+    height: 100%;
+    width: 100%;
+}
+
+.input-container form input {
     -webkit-appearance: none;
     font-size: 14px;
     border: solid 1px #dbdbdb;

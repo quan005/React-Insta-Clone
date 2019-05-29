@@ -6,7 +6,7 @@ import PostContent from './PostContent';
 import LikeSection from '../CommentSection/LikeSection';
 import CommentSection from '../CommentSection/CommentSection';
 
-const PostContainer = props => {
+const PostContainer = (props) => {
 
     return (
         <article>

@@ -1,5 +1,4 @@
 import React from 'react';
-import fuse from 'fuse.js';
 import './SearchBar.css';
 import Icons from './instagram-logos.png';
 import Icons2 from './instagram-logos-2.png';
@@ -95,14 +94,16 @@ class SearchBar extends React.Component {
         super(props);
         this.state = {
             post: props.dummyData,
-            username: props.username,
-            search: props.query,
+            search: '',
+            searchHandler: props.searchHandler,
             inputPlaceHolder: true,
         }
+        this.inputChangeHandler = this.inputChangeHandler.bind(this);
     }
 
     inputChangeHandler = event => {
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({[event.target.name]: event.target.value});
+        this.props.searchHandler(this.state.search);
     };
 
     inputBlurHandler = event => {
@@ -118,19 +119,6 @@ class SearchBar extends React.Component {
 
     render() {
 
-        // const fuseOptions = {
-        //     shouldSort: true,
-        //     threshold: 0.4,
-        //     location: 0,
-        //     distance: 50,
-        //     maxPatternLength: 12,
-        //     minMatchCharLength: 3,
-        //     keys: [this.state.username]
-        //   };
-
-        // const fuse = new Fuse(this.state.post, fuseOptions);
-
-        // const results = this.state.search ? fuse.search(this.state.search) : this.state.post;
 
         return (
             <div className="header">
@@ -143,15 +131,18 @@ class SearchBar extends React.Component {
                     </div>
 
                     <div className="input-container">
-                        <input
-                            type="text"
-                            value={this.state.search}
-                            placeholder="Search"
-                            name="search"
-                            id="header-search"
-                            onBlur={this.inputBlurHandler}
-                            onChange={this.state.search}
-                        />
+                        <form>
+                            <input
+                                type="text"
+                                value={this.state.search}
+                                placeholder="Search"
+                                name="search"
+                                id="header-search"
+                                autoComplete="off"
+                                onBlur={this.inputBlurHandler}
+                                onChange={this.inputChangeHandler}
+                            />
+                        </form>
 
                         <span className={`${this.state.inputPlaceHolder === true ? 'hidden' : ''}`} style={inputSearchIcon}></span>
                         <div className={`${this.state.inputPlaceHolder === true ? 'hidden' : 'input-space'}`}></div>

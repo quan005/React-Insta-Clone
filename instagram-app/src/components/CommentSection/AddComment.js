@@ -11,6 +11,7 @@ const AddComment = props => {
                 placeholder="Add a comment..."
                 name="addComment"
                 id="search"
+                autoComplete="off"
                 onChange={props.searchChangeHandler}
             />
         </form>
