@@ -4,11 +4,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: path.join(__dirname, "src", "index.js"),
   output: {
-    path: path.join(__dirname, "instagram-app", "public"),
+    path: path.join(__dirname, "instagram-app", "build"),
     filename: "bundle.js"
   },
   devServer: {
-    contentBase: path.join(__dirname, "instagram-app", "public")
+    contentBase: path.join(__dirname, "instagram-app", "build")
   },
   module: {
     rules: [
