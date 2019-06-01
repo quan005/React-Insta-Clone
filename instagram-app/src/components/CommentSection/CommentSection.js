@@ -22,9 +22,11 @@ class CommentSection extends React.Component {
         event.preventDefault();
 
         const newComment = {
-            username: 'Daquan90_',
+            username: localStorage.getItem('user'),
             text: this.state.addComment,
         };
+
+        window.localStorage.setItem(`${localStorage.getItem('user')}-comment`, newComment);
 
         this.setState({comments: [...this.state.comments, newComment], addComment: ''})
     };

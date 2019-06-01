@@ -1,4 +1,5 @@
 import React from 'react';
+import ImgLoop from './ImgLoop';
 import LoginPic from './login-pic.png';
 import Icons2 from '../../components/SearchBar/instagram-logos-2.png';
 import apple from './apple-store.png';
@@ -47,13 +48,7 @@ class Login extends React.Component {
     this.state = {
         username: '',
         password: '',
-        show: false,
-        // pics: [{Image: "https://www.instagram.com/static/images/homepage/screenshot1.jpg/d6bf0c928b5a.jpg"},
-        // {Image: "https://www.instagram.com/static/images/homepage/screenshot2.jpg/6f03eb85463c.jpg"},
-        // {Image: "https://www.instagram.com/static/images/homepage/screenshot3.jpg/f0c687aa6ec2.jpg"},
-        // {Image: "https://www.instagram.com/static/images/homepage/screenshot4.jpg/842fe5699220.jpg"},
-        // {Image: "https://www.instagram.com/static/images/homepage/screenshot5.jpg/0a2d3016f375.jpg"},
-        // ],
+        show: true,
     };
   }
 
@@ -80,6 +75,16 @@ class Login extends React.Component {
     }
   }
 
+  img1 = () => {
+      if (this.state.img1 === true) {
+          this.className('login-img img-visible');
+      } else if (this.state.img2 === true) {
+          this.className('login-img img-below-visible');
+      } else {
+          this.className('login-img');
+      }
+  }
+
   render() {
 
     return (
@@ -88,9 +93,7 @@ class Login extends React.Component {
               <main className="main-content">
                   <article className="content-container">
                       <div style={contentLeft}>
-                          <div className="phone-margin-top">
-                              {this.state.pics}
-                          </div>
+                          <ImgLoop />
                       </div>
 
                       <div className="content-right">
@@ -138,7 +141,7 @@ class Login extends React.Component {
                                                       <button 
                                                         type="button"
                                                         onClick={this.showHandler}
-                                                      >Show</button>
+                                                      >{this.state.show === false ? "Show" : "Hide"}</button>
                                                   </div>
                                               </div>
                                           </div>
